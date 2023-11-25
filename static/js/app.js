@@ -27,12 +27,13 @@ function updateMetadata(sample) {
     d3.json(samples_url).then(function(data) {
         // assign the metadata to a variable
         let metadata = data.metadata;
-        // use .filter() to only return the metadata for the chosen sample
+        // use .filter() to only return the metadata for the chosen sample by matching the ID
         let filterMetadata = metadata.filter(sampleObject => sampleObject.id == sample);
         // assign first element of filterMetadata array (array with a dictionary) to a variable
         let result = filterMetadata[0];
+
         // loop through each key:value pair in the metadata result dictionary and append it to the #sample-metadata html element
-        // assign #sample-metadata to a variable
+        // assign #sample-metadata to a variable 
         metadataPanel = d3.select("#sample-metadata").html("");
         // use Object.entries.forEach to return key:value pairs
         Object.entries(result).forEach(([key, value]) => {
@@ -84,7 +85,7 @@ function updatePlots(sample) {
             x: otu_ids,
             y: sample_values,
             mode: "markers",
-            marker: {size: [sample_values], color: [otu_ids]},
+            marker: {size: [sample_values], color: [otu_ids], colorscale: "Jet"},
             text: otu_labels 
         };
 
