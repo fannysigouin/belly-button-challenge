@@ -33,7 +33,7 @@ function updateMetadata(sample) {
         let result = filterMetadata[0];
         // loop through each key:value pair in the metadata result dictionary and append it to the #sample-metadata html element
         // assign #sample-metadata to a variable
-        metadataPanel = d3.select("#sample-metadata");
+        metadataPanel = d3.select("#sample-metadata").html("");
         // use Object.entries.forEach to return key:value pairs
         Object.entries(result).forEach(([key, value]) => {
             metadataPanel.append("h5").text(`${key}: ${value}`)
