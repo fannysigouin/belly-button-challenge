@@ -75,7 +75,7 @@ function updatePlots(sample) {
         let bar_data = [trace1];
 
         let bar_layout = {
-            title: `Top 10 OTUs for ${result.id}`
+            title: `Top 10 OTUs for Subject ID ${result.id}`
         };
         // build Plotly plot with data and layout, assigned to .bar id in html
         Plotly.newPlot("bar", bar_data, bar_layout);
@@ -85,7 +85,7 @@ function updatePlots(sample) {
             x: otu_ids,
             y: sample_values,
             mode: "markers",
-            marker: {size: [sample_values], color: [otu_ids], colorscale: "Jet"},
+            marker: {size: sample_values, color: otu_ids, colorscale: "Jet"},
             text: otu_labels 
         };
 
